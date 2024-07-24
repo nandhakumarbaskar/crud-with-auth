@@ -6,8 +6,10 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.json())
 
 const blogRouter = require("./routes/blog.routes")
+const userRouter = require("./routes/user.routes")
 
-app.use("/api", blogRouter)
+app.use("/api/blog", blogRouter)
+app.use("/api", userRouter)
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Server up and running on port ${process.env.PORT}`)
