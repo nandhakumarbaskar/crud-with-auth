@@ -7,8 +7,9 @@ app.use(bodyParser.json())
 
 const blogRouter = require("./routes/blog.routes")
 const userRouter = require("./routes/user.routes")
+const { verifyToken } = require("./middleware/auth.middleware")
 
-app.use("/api/blog", blogRouter)
+app.use("/api/blog", verifyToken, blogRouter)
 app.use("/api", userRouter)
 
 app.listen(process.env.PORT, ()=>{
